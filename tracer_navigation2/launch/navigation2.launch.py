@@ -57,7 +57,7 @@ def generate_launch_description():
 
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map',
-        default_value=os.path.join(get_package_share_directory('tracer_navigation2'), 'map', 'sparo_map.yaml'),
+        default_value=os.path.join(get_package_share_directory('tracer_navigation2'), 'map', 'hitech6.yaml'),
         description='Full path to map yaml file to load')
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
@@ -67,7 +67,7 @@ def generate_launch_description():
 
     declare_params_file_cmd = DeclareLaunchArgument(
         'params_file',
-        default_value=os.path.join(get_package_share_directory('tracer_navigation2'), 'param', 'tracer.yaml'),
+        default_value=os.path.join(get_package_share_directory('tracer_navigation2'), 'param', 'tracer_shim.yaml'),
         description='Full path to the ROS2 parameters file to use for all launched nodes')
 
     declare_bt_xml_cmd = DeclareLaunchArgument(
@@ -89,7 +89,7 @@ def generate_launch_description():
 
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(os.path.join(tracer_navigation2_dir,
-                                                       'tracer_localization_launch.launch.py')),
+                                                       'tracer_localization_launch.py')),
             launch_arguments={'namespace': namespace,
                               'map': map_yaml_file,
                               'use_sim_time': use_sim_time,
@@ -100,7 +100,7 @@ def generate_launch_description():
                               'use_lifecycle_mgr': 'false'}.items()),
 
        IncludeLaunchDescription(
-          PythonLaunchDescriptionSource(os.path.join(tracer_navigation2_dir, 'tracer_navigation_launch.launch.py')),
+          PythonLaunchDescriptionSource(os.path.join(tracer_navigation2_dir, 'tracer_navigation_launch.py')),
            launch_arguments={'namespace': namespace,
                              'use_sim_time': use_sim_time,
                              'autostart': autostart,

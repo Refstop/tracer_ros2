@@ -31,10 +31,10 @@ ARGUMENTS = [
 
 
 def generate_launch_description():
-    pkg_omo_r1_navigation = get_package_share_directory('omo_r1_navigation2')
+    tracer_navigation2_dir = get_package_share_directory('tracer_navigation2')
 
     slam_config = PathJoinSubstitution(
-        [pkg_omo_r1_navigation, 'param', 'slam_async.yaml'])
+        [tracer_navigation2_dir, 'param', 'slam_async.yaml'])
 
     slam = Node(
             package='slam_toolbox',
